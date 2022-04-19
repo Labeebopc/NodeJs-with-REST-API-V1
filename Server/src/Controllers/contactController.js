@@ -31,7 +31,7 @@ export const getContact = (req, res) => {
 export const getContactWithID = (req, res) => {
 
     Contact.findById(req.params.contactID, (err, Contact) => {
-     // contactID same as route('/contct:contctID') in contactRoute
+        // contactID same as route('/contct:contctID') in contactRoute
         if (err) {
             res.send(err)
         } else res.json(Contact);
@@ -46,6 +46,17 @@ export const updateContact = (req, res) => {
         if (err) {
             res.send(err)
         } else res.json(Contact);
+
+    })
+}
+
+// DELETE Routes
+export const deleteContact = (req, res) => {
+
+    Contact.remove({ _id: req.params.contactID }, (err, Contact) => {
+        if (err) {
+            res.send(err)
+        } else res.json({ message: 'Contact Successfuly Deleted' });
 
     })
 }

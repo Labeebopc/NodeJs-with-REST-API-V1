@@ -1,4 +1,4 @@
-import { addNewContact, getContact } from "../Controllers/contactController.js";
+import { addNewContact, getContact, getContactWithID, updateContact } from "../Controllers/contactController.js";
 
 const routes = (app) => {
     app.route('/contact')
@@ -7,13 +7,15 @@ const routes = (app) => {
             console.log(`Request from: ${req.originalUrl}`)
             console.log(`Request type: ${req.method}`)
             next()
-        },getContact)
+        }, getContact)
 
         .post(addNewContact);
 
     app.route('/contact/:contactID')
-        .put((req, res) =>
-            res.send('PUT Request Successful'))
+        .get(getContactWithID)
+
+
+        .put(updateContact)
 
         .delete((req, res) =>
             res.send('DELETE Request Successful'));

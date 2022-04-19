@@ -10,7 +10,7 @@ export const ContactSchema = new Schema({
     },
     email: {
         type: String
-    },                                            
+    },
     password: {
         type: String                            // Visit mongoose docs for different Schema types          
     },
